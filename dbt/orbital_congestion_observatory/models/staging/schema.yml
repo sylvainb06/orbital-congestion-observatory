@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: celestrak
+    description: "Staging model for CelesTrak orbital data enriched with derived orbital metrics."
+
+    columns:
+      - name: norad_cat_id
+        description: "NORAD catalog identifier."
+        data_tests:
+          - not_null
+          - unique

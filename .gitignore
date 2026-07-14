@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Environment & secrets
+.env
+.env.*
+*.key
+*credentials*.json
+*service-account*.json
+
+# Raw data
+data/raw/
+
+# dbt generated files
+dbt/**/target/
+dbt/**/logs/
+dbt/**/dbt_packages/
+
+# Project logs
+logs/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: space_raw
+    database: projet2306-502308
+    schema: space_raw
+
+    tables:
+      - name: celestrak

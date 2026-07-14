@@ -1,0 +1,2 @@
+INPUT = Path(...)
+OUTPUT = Path(...)
