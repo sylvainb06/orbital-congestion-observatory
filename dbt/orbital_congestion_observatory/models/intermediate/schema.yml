@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: satellites
+    description: >
+      Consolidated orbital object model combining CelesTrak,
+      GCAT and UCS data. Grain: one row per NORAD catalog identifier.
+
+    columns:
+      - name: norad_cat_id
+        description: "Unique NORAD catalog identifier for the orbital object."
+        data_tests:
+          - not_null
+          - unique

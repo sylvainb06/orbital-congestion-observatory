@@ -7,3 +7,5 @@ sources:
 
     tables:
       - name: celestrak
+      - name: GCAT
+      - name: UCS

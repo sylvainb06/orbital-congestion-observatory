@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: celestrak
-    description: "Staging model for CelesTrak orbital data enriched with derived orbital metrics."
+    description: "CelesTrak staging model enriched with derived orbital metrics and orbital classification."
 
     columns:
       - name: norad_cat_id
@@ -10,3 +10,23 @@ models:
         data_tests:
           - not_null
           - unique
+
+  - name: gcat
+    description: "Cleaned and standardized GCAT object catalog."
+
+    columns:
+      - name: jcat
+        description: "Unique GCAT object identifier."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: norad_cat_id
+        description: "NORAD catalog identifier when assigned."
+
+  - name: ucs
+    description: "Cleaned and standardized UCS satellite database."
+
+    columns:
+      - name: norad_cat_id
+        description: "NORAD catalog identifier."
