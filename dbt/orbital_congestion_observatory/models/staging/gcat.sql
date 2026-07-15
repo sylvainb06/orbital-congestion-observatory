@@ -1,7 +1,7 @@
 -- =============================================================== --
 -- STAGING GCAT — McDowell catalog (satcat)
 -- 1 row = 1 space object (unique key: jcat)
--- norad: STRING, NULL if not catalogued by the US Space Force
+-- norad_id: STRING; 'NNA' kept as-is = not catalogued by the US Space Force
 -- Excluded: '#Updated' header row + S69942 placeholder (no launch date)
 -- =============================================================== --
 
@@ -20,7 +20,7 @@ SELECT
     WHEN Type LIKE 'R%' THEN 'Rocket'
     WHEN Type LIKE 'C%' THEN 'Component'
     WHEN Type LIKE 'D%' THEN 'Debris'
-    ELSE 'Autre'
+    ELSE 'Other'
   END AS categorie
 
   -- ACTORS

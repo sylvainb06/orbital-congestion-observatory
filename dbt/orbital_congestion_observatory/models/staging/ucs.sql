@@ -1,6 +1,14 @@
+-- =============================================================== --
+-- STAGING UCS — UCS Satellite Database (frozen snapshot: 2023-05-01)
+-- 1 row = 1 operational satellite as of May 2023 (no debris, no rockets)
+-- norad_id: STRING to match GCAT, 9 known duplicates
+-- dry_mass_kg / power_watts: values with ranges or notes ('1,500-1,900', '2,800 (EOL)') are set to NULL by SAFE_CAST — columns kept for reference only
+-- Source discontinued: no update will ever exist beyond 2023-05-01
+-- =============================================================== --
+
 SELECT
   -- IDENTIFIERS
-  SAFE_CAST(norad_number AS INT64) AS norad_id
+  SAFE_CAST(norad_number AS STRING) AS norad_id
   ,cospar_number AS cospar_id
   ,current_official_name_of_satellite AS name
 
