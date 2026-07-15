@@ -38,3 +38,7 @@ models:
     intermediate:
       +materialized: view
       +schema: int_sylvain
+
+    marts:
+      +materialized: table
+      +schema: mart_sylvain
