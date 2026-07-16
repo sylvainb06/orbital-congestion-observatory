@@ -24,10 +24,10 @@ gcat_matched AS (
     SELECT *
     FROM gcat
 
-    WHERE norad_cat_id IS NOT NULL
+    WHERE norad_id IS NOT NULL
 
     QUALIFY ROW_NUMBER() OVER (
-        PARTITION BY norad_cat_id
+        PARTITION BY norad_id
         ORDER BY jcat
     ) = 1
 
@@ -41,7 +41,7 @@ ucs_matched AS (
     FROM ucs AS u
 
     INNER JOIN celestrak AS c
-        ON u.norad_cat_id = c.norad_cat_id
+        ON u.norad_id = c.norad_cat_id
         AND u.cospar_id = c.object_id
 
 ),
@@ -144,10 +144,10 @@ satellites AS (
     FROM celestrak AS c
 
     LEFT JOIN gcat_matched AS g
-        ON c.norad_cat_id = g.norad_cat_id
+        ON c.norad_cat_id = g.norad_id
 
     LEFT JOIN ucs_matched AS u
-        ON c.norad_cat_id = u.norad_cat_id
+        ON c.norad_cat_id = u.norad_id
         AND c.object_id = u.cospar_id
 
 )

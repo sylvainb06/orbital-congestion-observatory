@@ -12,7 +12,7 @@ WITH source AS (
     mean_anomaly,
     ephemeris_type,
     classification_type,
-    norad_cat_id,
+    SAFE_CAST(norad_cat_id AS STRING) AS norad_cat_id,
     element_set_no,
     rev_at_epoch,
     bstar,

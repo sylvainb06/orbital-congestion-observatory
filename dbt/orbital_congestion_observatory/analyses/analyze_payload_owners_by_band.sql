@@ -1,8 +1,11 @@
 WITH payloads AS (
 
     SELECT
-        owner,
-        state,
+        owner_code,
+        owner_name,
+        owner_class,
+        owner_state_code,
+        owner_country_gcat,
         launch_year,
 
         SAFE_CAST(
@@ -15,7 +18,7 @@ WITH payloads AS (
             AS INT64
         ) AS altitude_band_km
 
-    FROM `projet2306-502308.space_int_sylvain.orbital_objects`
+    FROM {{ ref('orbital_objects') }}
 
     WHERE object_category = 'Payload'
 
@@ -25,8 +28,10 @@ owners_by_band AS (
 
     SELECT
         altitude_band_km,
-        owner,
-        state,
+        owner_code,
+        owner_name,
+        owner_class,
+        owner_state_code,
         COUNT(*) AS payload_count,
         MIN(launch_year) AS first_launch_year,
         MAX(launch_year) AS latest_launch_year
@@ -42,8 +47,11 @@ owners_by_band AS (
 
     GROUP BY
         altitude_band_km,
-        owner,
-        state
+        owner_code,
+        owner_name,
+        owner_class,
+        owner_state_code,
+        owner_country_gcat
 
 )
 

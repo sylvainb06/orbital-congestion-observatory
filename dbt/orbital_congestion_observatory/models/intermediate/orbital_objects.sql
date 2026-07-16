@@ -12,13 +12,20 @@ celestrak AS (
 
 ),
 
+orgs AS (
+
+    SELECT *
+    FROM {{ ref('orgs') }}
+
+),
+
 orbital_objects AS (
 
     SELECT
 
         -- IDENTIFIERS
         g.jcat,
-        g.norad_cat_id,
+        g.norad_id AS norad_cat_id,
         c.object_id AS cospar_id,
 
         -- OBJECT
@@ -32,9 +39,13 @@ orbital_objects AS (
         g.status,
 
         -- OWNERSHIP
-        g.owner,
+        g.owner AS owner_code,
+        o.org_name AS owner_name,
+        o.state_code AS owner_state_code,
+        o.org_class AS owner_class,
+
         g.manufacturer,
-        g.state,
+        g.state AS owner_country_gcat,
 
         -- ORBIT CLASSIFICATION
         c.orbital_zone,
@@ -80,7 +91,10 @@ orbital_objects AS (
     FROM gcat AS g
 
     LEFT JOIN celestrak AS c
-        ON g.norad_cat_id = c.norad_cat_id
+        ON g.norad_id = c.norad_cat_id
+
+    LEFT JOIN orgs AS o
+    ON g.owner = o.org_code
 
 )
 
