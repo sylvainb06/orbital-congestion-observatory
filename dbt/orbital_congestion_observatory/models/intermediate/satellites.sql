@@ -58,7 +58,7 @@ satellites AS (
         -- OBJECT
         c.object_name,
         g.name AS gcat_object_name,
-        g.categorie AS object_category,
+        g.category AS object_category,
         g.type_code,
         g.status,
 

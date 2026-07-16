@@ -34,7 +34,7 @@ orbital_objects AS (
             g.name
         ) AS object_name,
 
-        g.categorie AS object_category,
+        g.category AS object_category,
         g.type_code,
         g.status,
 

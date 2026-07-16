@@ -21,7 +21,7 @@ SELECT
     WHEN Type LIKE 'C%' THEN 'Component'
     WHEN Type LIKE 'D%' THEN 'Debris'
     ELSE 'Other'
-  END AS categorie
+  END AS category
 
   -- ACTORS
   ,Owner AS owner
